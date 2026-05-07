@@ -1,0 +1,174 @@
+@import "tailwindcss";
+
+/* Custom scrollbar styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Dark mode scrollbar */
+.dark .scrollbar-thin::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 0 72% 51%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 210 40% 96%;
+  --secondary-foreground: 222.2 84% 4.9%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 210 40% 96%;
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+  /* extra tokens used in UI */
+  --success: 142.1 76.2% 36.3%;
+  --warning: 38 92% 50%;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 0 72% 51%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 212.7 26.8% 83.9%;
+  --success: 142.1 70% 45%;
+  --warning: 38 92% 56%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* Global text scale (apply on html element) */
+html.text-scale-s { font-size: 14px; }
+html.text-scale-m { font-size: 16px; }
+html.text-scale-l { font-size: 18px; }
+html.text-scale-xl { font-size: 20px; }
+
+/* Bridge CSS variables to Tailwind color tokens */
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-border: hsl(var(--border));
+  --color-primary: hsl(var(--primary));
+  --color-secondary: hsl(var(--secondary));
+  --color-muted: hsl(var(--muted));
+  --color-accent: hsl(var(--accent));
+  --color-destructive: hsl(var(--destructive));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-success: hsl(var(--success));
+  --color-warning: hsl(var(--warning));
+}
+
+/* Low bandwidth mode styles */
+body.low-bandwidth {
+  /* Reduce animations */
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+  
+  /* Simplify shadows */
+  .shadow-md, .shadow-lg, .shadow-sm {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.1) !important;
+  }
+  
+  /* Reduce border radius */
+  .rounded-lg, .rounded-xl, .rounded-md {
+    border-radius: 0.25rem !important;
+  }
+  
+  /* Hide decorative elements */
+  .bg-gradient-to-r {
+    background-image: none !important;
+  }
+  
+  /* Simplify cards */
+  .card {
+    border: 1px solid #e5e7eb !important;
+  }
+}
+
+/* Ensure switches are visible */
+.switch[aria-checked="true"] {
+  background-color: hsl(142.1 76.2% 36.3%) !important;
+}
+
+.switch[aria-checked="false"] {
+  background-color: hsl(240 5.9% 90%) !important;
+}
+
+/* Colorful animated gradient and glow helpers */
+.animated-gradient {
+  background: linear-gradient(90deg, #f97316, #ef4444, #8b5cf6, #06b6d4);
+  background-size: 300% 300%;
+  animation: gradientShift 6s ease infinite;
+}
+
+.glow {
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.35), 0 4px 10px rgba(99, 102, 241, 0.25);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
